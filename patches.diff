@@ -1,0 +1,23 @@
+--- a/pueue_lib/Cargo.toml
++++ b/pueue_lib/Cargo.toml
+@@ -69,3 +69,6 @@
+ # Linux only
+ [target.'cfg(target_os = "linux")'.dependencies]
+ procfs = { version = "0.14.2", default-features = false }
++
++[target.'cfg(target_os = "android")'.dependencies]
++procfs = { version = "0.14.2", default-features = false }
+--- a/pueue_lib/src/process_helper/mod.rs
++++ b/pueue_lib/src/process_helper/mod.rs
+@@ -21,6 +21,11 @@
+ #[cfg(target_os = "linux")]
+ pub use self::linux::process_exists;
+ 
++#[cfg(target_os = "android")]
++mod linux;
++#[cfg(target_os = "android")]
++pub use self::linux::process_exists;
++
+ // Apple specific process support
+ #[cfg(target_vendor = "apple")]
+ mod apple;

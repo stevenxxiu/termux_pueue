@@ -1,0 +1,14 @@
+--- a/pueue_lib/src/process_helper/mod.rs
++++ b/pueue_lib/src/process_helper/mod.rs
+@@ -21,6 +21,11 @@
+ #[cfg(target_os = "linux")]
+ pub use self::linux::process_exists;
+ 
++#[cfg(target_os = "android")]
++mod linux;
++#[cfg(target_os = "android")]
++pub use self::linux::process_exists;
++
+ // Apple specific process support
+ #[cfg(target_vendor = "apple")]
+ mod apple;
