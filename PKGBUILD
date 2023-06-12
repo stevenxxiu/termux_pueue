@@ -33,7 +33,7 @@ build() {
   export CFLAGS=''
   CFLAGS+=' -fstack-protector-strong'
   CFLAGS+=' -Oz'
-  CFLAGS+=" -I${HOME}/aarch64${TERMUX_PREFIX}/include"
+  CFLAGS+=" -I${TERMUX_PREFIX}/include"
 
   export RUSTFLAGS="-C link-args=-Wl,-rpath=${TERMUX_PREFIX}/lib"
 
