@@ -18,7 +18,7 @@ prepare() {
   cargo fetch --target "$CARCH-unknown-linux-gnu" --locked
 
   # Patches
-  for d in ~/.cargo/registry/src/github.com-*/libproc-*; do
+  for d in ~/.cargo/registry/src/index.crates.io-*/libproc-*; do
     patch --silent --strip 1 --directory ${d} < "${startdir}/crates-libproc-for-android.diff" || :
   done
   patch --silent --strip 1 --input "${startdir}/patches.diff"
