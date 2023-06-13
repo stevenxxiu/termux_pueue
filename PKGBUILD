@@ -1,5 +1,5 @@
 pkgname=pueue
-pkgver=3.1.2
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="A CLI tool for managing long running shell commands"
 arch=('aarch64')
@@ -7,7 +7,7 @@ url="https://github.com/nukesor/pueue"
 license=('MIT')
 makedepends=('cargo' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('653eac9b7fc111cc4b9bddacbbf514932a8d273a059b20b1cc66af74e500eb5e')
+sha256sums=('0c3126579661f894fb02a0d8c0e138ab23b277e97cea2d85e48d3d2b9fb1c372')
 
 TERMUX_PREFIX='/data/data/com.termux/files/usr'
 
@@ -35,10 +35,7 @@ build() {
   CFLAGS+=' -Oz'
   CFLAGS+=" -I${TERMUX_PREFIX}/include"
 
-  export RUSTFLAGS="-A bindings_with_variant_name -C link-args=-Wl,-rpath=${TERMUX_PREFIX}/lib"
-
-  # Use the latest *Chrono*, so we get correct local time
-  cargo add chrono@0.4.26 --package pueue-lib
+  export RUSTFLAGS="-C link-args=-Wl,-rpath=${TERMUX_PREFIX}/lib"
 
   cargo build \
     --target aarch64-linux-android \
