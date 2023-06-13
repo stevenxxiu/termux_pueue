@@ -35,7 +35,7 @@ build() {
   CFLAGS+=' -Oz'
   CFLAGS+=" -I${TERMUX_PREFIX}/include"
 
-  export RUSTFLAGS="-C link-args=-Wl,-rpath=${TERMUX_PREFIX}/lib"
+  export RUSTFLAGS="-A bindings_with_variant_name -C link-args=-Wl,-rpath=${TERMUX_PREFIX}/lib"
 
   # Use the latest *Chrono*, so we get correct local time
   cargo add chrono@0.4.26 --package pueue-lib
