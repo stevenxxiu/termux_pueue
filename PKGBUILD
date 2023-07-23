@@ -5,7 +5,6 @@ pkgdesc="A CLI tool for managing long running shell commands"
 arch=('aarch64')
 url="https://github.com/nukesor/pueue"
 license=('MIT')
-makedepends=('cargo' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('0c3126579661f894fb02a0d8c0e138ab23b277e97cea2d85e48d3d2b9fb1c372')
 
@@ -27,7 +26,6 @@ prepare() {
 build() {
   cd "$pkgname-$pkgver"
 
-  export PATH="/opt/android-ndk/toolchains/llvm/prebuilt/linux-x86_64/bin:$PATH"
   export AR_aarch64_linux_android='/opt/android-ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-ar'
 
   export CFLAGS=''
